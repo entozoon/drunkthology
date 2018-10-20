@@ -1,11 +1,19 @@
 ---
 title: Hello World! COME ONE EDWARD
 featuredImage: /images/uploads/isabella juskova.jpg
-subtitle: This is the home page subtitle
+subtitle: |-
+  This is the home page subtitle
+
+  \- dwadwa
+
+  <strong>FUCKIN STRONG</strong>
 meta:
   title: ''
 ---
 <p><strong>stuff</strong> here like this..</p>
+
+
+
 
 `dwa`
 
