@@ -1,3 +1,10 @@
+//
+//
+//
+// BLOG STUFF, WE MIGHT NEED LATER WHO KNOWS
+//
+//
+//
 // import React from 'react'
 // import { Link } from 'react-router-dom'
 // import { ChevronLeft } from 'react-feather'

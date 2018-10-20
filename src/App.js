@@ -8,7 +8,6 @@ import Home from "./views/Home";
 import Generic from "./views/Generic";
 // import SinglePost from "./views/SinglePost";
 import Contact from "./views/Contact";
-import NoMatch from "./views/NoMatch";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import ServiceWorkerNotifications from "./components/ServiceWorkerNotifications";
@@ -140,8 +139,6 @@ class App extends Component {
                  />
                );
              })} */}
-
-            <Route render={() => <NoMatch siteUrl={siteUrl} />} />
           </Switch>
           <Footer />
         </div>

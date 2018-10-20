@@ -8,6 +8,14 @@ https://drunkthology.netlify.com/admin
     npm i
     npm start
 
+## Troubleshooting
+
+### Published something but not showing up on the site? Options:
+
+1. If you're working locally, do a `git pull`
+2. Restart npm
+3. Wait a while (2 mins)
+
 ##
 
 ##
