@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Footer.scss";
 
-export default ({ globalSettings, socialSettings, navLinks }) => (
+export default () => (
   <footer className="footer">
     <span>Footer jank</span>
   </footer>
