@@ -7,9 +7,9 @@ meta:
 ---
 <p><strong>This</strong> is actual HTML in the wysiwyg editor</p>
 
+Local? right?
+
 **Whereas this **is _markdown_, written either as rich text or raw markdown.
-
-
 
 ```
 Hurray for boobies!
