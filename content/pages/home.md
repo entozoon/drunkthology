@@ -1,7 +1,7 @@
 ---
 title: Drunkthology
 featuredImage: /images/uploads/31156010_360908777731861_109179700751892480_n.gif
-subtitle: <br /> yass
+subtitle: <br /> yass. local.
 meta:
   title: ''
 ---
