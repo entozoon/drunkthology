@@ -5,7 +5,7 @@ subtitle: This is the home page subtitle
 meta:
   title: ''
 ---
-<p><strong>stuff</strong> here like this</p>
+<p><strong>stuff</strong> here like this..</p>
 
 `dwa`
 
