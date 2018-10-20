@@ -7,7 +7,7 @@ meta:
 ---
 <p><strong>This</strong> is actual HTML in the wysiwyg editor</p>
 
-Local? right?
+Local? right? maybe can't be actually
 
 Local to the max. Please
 
