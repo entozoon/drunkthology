@@ -5,8 +5,8 @@ import Helmet from "react-helmet";
 import ScrollToTop from "./components/ScrollToTop";
 import Meta from "./components/Meta";
 import Home from "./views/Home";
-import About from "./views/About";
-import SinglePost from "./views/SinglePost";
+import Generic from "./views/Generic";
+// import SinglePost from "./views/SinglePost";
 import Contact from "./views/Contact";
 import NoMatch from "./views/NoMatch";
 import Nav from "./components/Nav";
@@ -94,7 +94,7 @@ class App extends Component {
             <RouteWithMeta
               path="/about/"
               exact
-              component={About}
+              component={Generic}
               fields={this.getDocument("pages", "about")}
             />
             <RouteWithMeta
