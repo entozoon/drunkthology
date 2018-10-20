@@ -1,5 +1,5 @@
 ---
-title: About page title..
+title: About page title...
 featuredImage: /images/uploads/card-og.png
 subtitle: Subtitle
 ---
