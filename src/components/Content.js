@@ -1,5 +1,5 @@
 import React from "react";
-import Marked from "react-markdown";
+import Marked from "react-markdown/with-html";
 import PropTypes from "prop-types";
 
 import { getImageSrc, getImageSrcset } from "../util/getImageUrl";
