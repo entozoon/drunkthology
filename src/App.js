@@ -48,30 +48,34 @@ class App extends Component {
 
           <Nav />
 
-          <Switch>
-            <Route
-              path="/"
-              exact
-              render={route => (
-                <Home {...route} {...this.getDataItem("pages", "home")} />
-              )}
-            />
-            <Route
-              path="/about/"
-              exact
-              render={route => (
-                <Generic {...route} {...this.getDataItem("pages", "about")} />
-              )}
-            />
-            <Route
-              path="/contact/"
-              exact
-              render={route => (
-                <Generic {...route} {...this.getDataItem("pages", "contact")} />
-              )}
-            />
+          <main>
+            <Switch>
+              <Route
+                path="/"
+                exact
+                render={route => (
+                  <Home {...route} {...this.getDataItem("pages", "home")} />
+                )}
+              />
+              <Route
+                path="/about/"
+                exact
+                render={route => (
+                  <Generic {...route} {...this.getDataItem("pages", "about")} />
+                )}
+              />
+              <Route
+                path="/contact/"
+                exact
+                render={route => (
+                  <Generic
+                    {...route}
+                    {...this.getDataItem("pages", "contact")}
+                  />
+                )}
+              />
 
-            {/* {posts.map((post, index) => {
+              {/* {posts.map((post, index) => {
                const path = slugify(`/blog/${post.title}`);
                const nextPost = posts[index - 1];
                const prevPost = posts[index + 1];
@@ -106,7 +110,8 @@ class App extends Component {
                  />
                );
              })} */}
-          </Switch>
+            </Switch>
+          </main>
           <Footer />
         </div>
       </Router>
