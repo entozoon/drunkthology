@@ -1,6 +1,6 @@
 ---
 title: Drunkthology
-featuredImage: /images/uploads/31156010_360908777731861_109179700751892480_n.gif
+featuredImage: /images/uploads/card-og.png
 subtitle: <br /> yass. local.
 meta:
   title: ''
