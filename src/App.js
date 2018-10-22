@@ -1,107 +1,74 @@
 import React, { Component, Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Helmet from "react-helmet";
-
 import ScrollToTop from "./components/ScrollToTop";
 import Meta from "./components/Meta";
 import Home from "./views/Home";
-import Generic from "./views/Generic";
 // import SinglePost from "./views/SinglePost";
-import Contact from "./views/Contact";
+import Generic from "./views/Generic";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-import ServiceWorkerNotifications from "./components/ServiceWorkerNotifications";
 import data from "./data.json";
 import { slugify } from "./util/url";
 import { documentHasTerm, getCollectionTerms } from "./util/collection";
-
-const RouteWithMeta = ({ component: Component, ...props }) => (
-  <Route
-    {...props}
-    render={routeProps => (
-      <Fragment>
-        <Meta {...props} />
-        <Component {...routeProps} {...props} />
-      </Fragment>
-    )}
-  />
-);
 
 class App extends Component {
   state = {
     data
   };
 
-  getDocument = (collection, name) =>
-    this.state.data[collection] &&
-    this.state.data[collection].filter(page => page.name === name)[0];
+  componentDidMount = () => {
+    // console.log(this.state.data);
+  };
 
-  getDocuments = collection => this.state.data[collection] || [];
+  getDataItem = (collection, name) => {
+    return (
+      this.state.data[collection] &&
+      this.state.data[collection].filter(c => c.name === name)[0]
+    );
+  };
 
   render() {
-    const globalSettings = this.getDocument("settings", "global");
-    const {
-      siteTitle,
-      siteUrl,
-      siteDescription,
-      socialMediaCard,
-      headerScripts
-    } = globalSettings;
-
-    const posts = this.getDocuments("posts").filter(
-      post => post.status !== "Draft"
-    );
+    const posts = this.state.data.posts.filter(post => post.status !== "Draft");
     const categoriesFromPosts = getCollectionTerms(posts, "categories");
-    const postCategories = this.getDocuments("postCategories").filter(
+    const postCategories = this.state.data.postCategories.filter(
       category => categoriesFromPosts.indexOf(category.name.toLowerCase()) >= 0
     );
 
     return (
       <Router>
-        <div className="React-Wrap">
+        <div>
           <ScrollToTop />
-          <ServiceWorkerNotifications reloadOnUpdate />
+          {/* It is possible to override title with <Helmet /> and meta description with <Meta />
           <Helmet
-            defaultTitle={siteTitle}
-            titleTemplate={`${siteTitle} | %s`}
-          />
-          <Meta
-            headerScripts={headerScripts}
-            absoluteImageUrl={
-              socialMediaCard &&
-              socialMediaCard.image &&
-              siteUrl + socialMediaCard.image
-            }
-            twitterCreatorAccount={
-              socialMediaCard && socialMediaCard.twitterCreatorAccount
-            }
-            twitterSiteAccount={
-              socialMediaCard && socialMediaCard.twitterSiteAccount
-            }
-          />
+            defaultTitle="Drunkthology"
+            titleTemplate={`Drunkthology | %s`}
+          /> */}
+          <Helmet title="hey 1" />
 
           <Nav />
 
           <Switch>
-            <RouteWithMeta
+            <Route
               path="/"
               exact
-              component={Home}
-              description={siteDescription}
-              fields={this.getDocument("pages", "home")}
+              render={route => (
+                <Home {...route} {...this.getDataItem("pages", "home")} />
+              )}
             />
-            <RouteWithMeta
+            <Route
               path="/about/"
               exact
-              component={Generic}
-              fields={this.getDocument("pages", "about")}
+              render={route => (
+                <Generic {...route} {...this.getDataItem("pages", "about")} />
+              )}
             />
-            <RouteWithMeta
+            <Route
               path="/contact/"
               exact
-              component={Contact}
-              fields={this.getDocument("pages", "contact")}
-              siteTitle={siteTitle}
+              render={route => (
+                <Generic {...route} {...this.getDataItem("pages", "contact")} />
+              )}
             />
 
             {/* {posts.map((post, index) => {
@@ -133,7 +100,7 @@ class App extends Component {
                    path={path}
                    exact
                    component={Blog}
-                   fields={this.getDocument("pages", "blog")}
+                   fields={this.getDataItem("pages", "blog")}
                    posts={categoryPosts}
                    postCategories={postCategories}
                  />
