@@ -19,6 +19,4 @@ Hurray for boobies!
 
 >
 
-![null](/images/uploads/img_2486.jpg)
-
 #
