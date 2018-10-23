@@ -1,8 +1,9 @@
 import React from "react";
 import Helmet from "react-helmet";
 import Content from "../components/Content";
+import Posts from "../components/Posts";
 
-export default ({ body, title, subtitle, featuredImage }) => {
+export default ({ data, body, title, subtitle, featuredImage }) => {
   return (
     <>
       <Helmet>
@@ -13,6 +14,8 @@ export default ({ body, title, subtitle, featuredImage }) => {
       <img src={featuredImage} alt="" />
       <h1>{title}</h1>
       <h2>{subtitle}</h2>
+
+      <Posts posts={data.posts} />
 
       <Content source={body} />
     </>
