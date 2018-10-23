@@ -1,11 +1,9 @@
 import React from "react";
 
-import "../src/globalStyles.css";
+import "../src/App.scss";
 import data from "../src/data.json";
 import Home from "../src/views/Home";
-import About from "../src/views/About";
-import Contact from "../src/views/Contact";
-import SinglePost from "../src/views/SinglePost";
+import Post from "../src/views/Post";
 
 console.log("React version", React.version);
 
@@ -33,7 +31,7 @@ CMS.registerPreviewTemplate("contact-page", ({ entry }) => (
   <Contact fields={entry.toJS().data} siteTitle={globalSettings.siteTitle} />
 ));
 CMS.registerPreviewTemplate("posts", ({ entry }) => (
-  <SinglePost fields={entry.toJS().data} />
+  <Post fields={entry.toJS().data} />
 ));
 
 // Return to home when user logging out
