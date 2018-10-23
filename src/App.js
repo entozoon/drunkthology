@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import Home from "./views/Home";
@@ -9,43 +9,51 @@ import Footer from "./components/Footer";
 import data from "./data.json";
 import { slugify } from "./util/url";
 import { documentHasTerm, getCollectionTerms } from "./util/collection";
-
 class App extends Component {
   state = {
     data
   };
-
   componentDidMount = () => {
     // console.log(this.state.data);
+    this.setState(
+      state => {
+        // .filter these with only those in the past
+        state.data.posts = state.data.posts;
+        // order by date
+        return state;
+      },
+      () => {
+        console.log(this.state.data.posts);
+      }
+    );
+    // this.setState({posts: this.state.data.posts.filter(p => {
+    //   console.log(p);
+    //   return true;
+    // });
   };
-
   getDataItem = (collection, name) => {
     return (
       this.state.data[collection] &&
       this.state.data[collection].filter(c => c.name === name)[0]
     );
   };
-
   render() {
-    const posts = this.state.data.posts.filter(post => post.status !== "Draft");
-    const categoriesFromPosts = getCollectionTerms(posts, "categories");
-    const postCategories = this.state.data.postCategories.filter(
-      category => categoriesFromPosts.indexOf(category.name.toLowerCase()) >= 0
-    );
-
     return (
       <Router>
         <>
           <ScrollToTop />
           <Nav />
-
           <main>
             <Switch>
               <Route
                 path="/"
                 exact
                 render={route => (
-                  <Home {...route} {...this.getDataItem("pages", "home")} />
+                  <Home
+                    {...route}
+                    {...this.getDataItem("pages", "home")}
+                    posts={this.state.posts}
+                  />
                 )}
               />
               <Route
@@ -65,7 +73,6 @@ class App extends Component {
                   />
                 )}
               />
-
               {/* {posts.map((post, index) => {
                const path = slugify(`/blog/${post.title}`);
                const nextPost = posts[index - 1];
@@ -82,7 +89,6 @@ class App extends Component {
                  />
                );
              })}
-
              {postCategories.map(postCategory => {
                const slug = slugify(postCategory.title);
                const path = slugify(`/blog/category/${slug}`);
@@ -109,5 +115,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;

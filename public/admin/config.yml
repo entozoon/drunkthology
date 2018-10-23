@@ -125,51 +125,33 @@ collections: # A list of collections the CMS should be able to edit
     create: true # Allow users to create new documents in this collection
     fields: # The fields each document in this collection have
       - { label: Title, name: title, widget: string }
-      - label: "Status"
-        name: "status"
-        widget: "select"
-        options: ["Published", "Featured", "Draft"]
-        default: "Published"
-      - { label: Date / Order, name: date, widget: date }
+      - { label: Date, name: date, widget: date }
       - {
-          label: Post Featured Image,
-          name: postFeaturedImage,
+          label: Featured Image,
+          name: featuredImage,
           widget: image,
           required: false,
         }
       - { label: Excerpt, name: excerpt, widget: text }
       - { label: Content, name: body, widget: markdown }
-      - label: "Categories"
-        name: "categories"
-        widget: "list"
-        required: false
-        fields:
-          - label: "Category"
-            name: "category"
-            widget: "relation"
-            collection: "postCategories"
-            searchFields: ["title"]
-            valueField: "title"
-      - label: "Meta"
-        required: false
-        name: "meta"
-        widget: "object"
-        fields:
-          - { label: Title, name: title, widget: string, required: false }
-          - {
-              label: Description,
-              name: description,
-              widget: text,
-              required: false,
-              pattern: [".{,300}", "Must not exceed 300 characters"],
-            }
-          - {
-              label: Canonical Link,
-              name: canonicalLink,
-              widget: string,
-              required: false,
-            }
-          - { label: Noindex, name: noindex, widget: boolean, required: false }
+      # - label: "Categories"
+      #   name: "categories"
+      #   widget: "list"
+      #   required: false
+      #   fields:
+      #     - label: "Category"
+      #       name: "category"
+      #       widget: "relation"
+      #       collection: "postCategories"
+      #       searchFields: ["title"]
+      #       valueField: "title"
+      - {
+          label: Meta Description,
+          name: metaDescription,
+          widget: text,
+          required: false,
+          pattern: [".{,300}", "Must not exceed 300 characters"],
+        }
 
   - name: postCategories
     label: Post Category
