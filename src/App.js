@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Helmet from "react-helmet";
 import ScrollToTop from "./components/ScrollToTop";
-import Meta from "./components/Meta";
 import Home from "./views/Home";
 // import SinglePost from "./views/SinglePost";
 import Generic from "./views/Generic";
@@ -37,15 +35,8 @@ class App extends Component {
 
     return (
       <Router>
-        <div>
+        <>
           <ScrollToTop />
-          {/* It is possible to override title with <Helmet /> and meta description with <Meta />
-          <Helmet
-            defaultTitle="Drunkthology"
-            titleTemplate={`Drunkthology | %s`}
-          /> */}
-          <Helmet title="hey 1" />
-
           <Nav />
 
           <main>
@@ -113,7 +104,7 @@ class App extends Component {
             </Switch>
           </main>
           <Footer />
-        </div>
+        </>
       </Router>
     );
   }
